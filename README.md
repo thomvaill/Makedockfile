@@ -1,8 +1,7 @@
 # Makedockfile
 
+[![Build Status](https://travis-ci.com/Thomvaill/Makedockfile.svg?branch=master)](https://travis-ci.com/Thomvaill/Makedockfile)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-A simple Makefile for your Docker projects.
 
 ## Purpose
 
