@@ -210,5 +210,5 @@ self-update: ## Downloads the latest version of Makedockfile and replace it
 	tmpDir=$$(mktemp -d) \
 	&& git clone --depth=1 $(MDF_MAKEDOCKFILE_REPOSITORY) $$tmpDir \
 	&& cp ./Makefile ./Makefile.bak \
-	&& cp $$tmpDir/Makefile ./Makefile \
+	&& cp $$tmpDir/src/Makefile ./Makefile \
 	&& rm -rf $$tmpDir
