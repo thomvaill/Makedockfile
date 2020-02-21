@@ -22,7 +22,7 @@ It is also possible to create a `Dockerfile.test` file to execute unit or integr
 Have a look at [example/Dockerfile.test](example/Dockerfile.test) to see an example.
 
 Everything is customizable into `Makedockfile.conf`, and locally into `Makedockfile.dist.conf` (not versioned).
-Please see the documentation directly into the [Makefile](Makefile).
+Please see the documentation directly into the [Makefile](src/Makefile).
 
 ## Quick start
 
