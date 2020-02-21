@@ -1,0 +1,8 @@
+language: shell
+services:
+  - docker
+jobs:
+  include:
+    - stage: test
+      name: Tests
+      script: ./tests/run-tests.sh

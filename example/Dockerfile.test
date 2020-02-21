@@ -1,0 +1,7 @@
+FROM thomvaill/makedockfile-test:latest
+
+# Re-run npm install to install dev dependencies
+RUN npm install
+
+# Execute unit tests
+CMD [ "npm", "test" ]

@@ -1,0 +1,2 @@
+https://raw.githubusercontent.com/Thomvaill/Makedockfile/master/src/Makefile
+https://raw.githubusercontent.com/Thomvaill/Makedockfile/master/src/Makedockfile.conf
