@@ -29,6 +29,7 @@ Please see the documentation directly into the [Makefile](Makefile).
 ```bash
 cd your_project
 wget -q -i https://raw.githubusercontent.com/Thomvaill/Makedockfile/master/wget.txt
+rm wget.txt
 echo "\nMakedockfile.dist.conf\nMakedockfile.out\n" >> .gitignore
 ```
 
