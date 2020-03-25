@@ -97,7 +97,7 @@ help: ## This help
 
 #:## Docker tasks for development
 build: ## Build image
-	$(eval MDF_IIDFILE_PATH := $(shell mktemp -t dm-iid-XXXXX))
+	$(eval MDF_IIDFILE_PATH := $(shell mktemp -t dm-iid-XXXXXX))
 	@echo 'Building $(MDF_IMAGE_NAME)...'
 	docker image build --force-rm=true --iidfile=$(MDF_IIDFILE_PATH) $(MDF_BUILD_PARAMS) -t $(MDF_IMAGE_NAME):latest .
 	@echo "MDF_IMAGE_ID=`cat $(MDF_IIDFILE_PATH)`" > $(MDF_ARTIFACT_PATH)
