@@ -1,14 +1,14 @@
 # Makedockfile
 # https://github.com/Thomvaill/Makedockfile/
 #
-# @version 1.0.0
+# @version 1.0.1
 # @author  Thomvaill (https://github.com/Thomvaill)
 # @license MIT
 #
 # Inspired by https://gist.github.com/mpneuried/0594963ad38e68917ef189b4e6a269db
 #
 
-MDF_MAKEDOCKFILE_VERSION = 1.0.0
+MDF_MAKEDOCKFILE_VERSION = 1.0.1
 MDF_MAKEDOCKFILE_REPOSITORY = https://github.com/Thomvaill/Makedockfile.git
 
 # CONFIG

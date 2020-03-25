@@ -33,6 +33,12 @@ rm wget.txt
 echo "\nMakedockfile.dist.conf\nMakedockfile.out\n" >> .gitignore
 ```
 
+## Changelog
+
+### Version 1.0.1
+
+- Fixes `mktemp` on Alpine Linux
+
 ## Acknowledgments
 
 - Makefile inspired from [mpneuried's gist](https://gist.github.com/mpneuried/0594963ad38e68917ef189b4e6a269db)
