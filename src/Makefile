@@ -1,14 +1,14 @@
 # Makedockfile
 # https://github.com/Thomvaill/Makedockfile/
 #
-# @version 1.0.1
+# @version 1.0.2
 # @author  Thomvaill (https://github.com/Thomvaill)
 # @license MIT
 #
 # Inspired by https://gist.github.com/mpneuried/0594963ad38e68917ef189b4e6a269db
 #
 
-MDF_MAKEDOCKFILE_VERSION = 1.0.1
+MDF_MAKEDOCKFILE_VERSION = 1.0.2
 MDF_MAKEDOCKFILE_REPOSITORY = https://github.com/Thomvaill/Makedockfile.git
 
 # CONFIG
@@ -41,7 +41,7 @@ MDF_UTAG ?= $(MDF_VERSION_TAG)-$(shell git log -1 --pretty=%h)
 else
 MDF_UTAG ?= $(shell git log -1 --pretty=%h)
 endif
-MDF_BRANCH_TAG ?= $(shell git rev-parse --abbrev-ref HEAD)
+MDF_BRANCH_TAG ?= $(shell git rev-parse --abbrev-ref HEAD | tr / -)
 
 # Private variables
 ifdef MDF_NAMESPACE
