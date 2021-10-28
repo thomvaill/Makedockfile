@@ -1,14 +1,14 @@
 # Makedockfile
 # https://github.com/Thomvaill/Makedockfile/
 #
-# @version 1.0.2
+# @version 1.1.0
 # @author  Thomvaill (https://github.com/Thomvaill)
 # @license MIT
 #
 # Inspired by https://gist.github.com/mpneuried/0594963ad38e68917ef189b4e6a269db
 #
 
-MDF_MAKEDOCKFILE_VERSION = 1.0.2
+MDF_MAKEDOCKFILE_VERSION = 1.1.0
 MDF_MAKEDOCKFILE_REPOSITORY = https://github.com/Thomvaill/Makedockfile.git
 
 # CONFIG
@@ -190,6 +190,12 @@ version-tag: release ## Add this target to `release` to also tag the released im
 	@echo 'Tagging the current release as "$(MDF_VERSION_TAG)"...'
 	$(call tag_and_push,$(MDF_REGISTRY_IMAGE_NAME):$(MDF_UTAG),$(MDF_REGISTRY_IMAGE_NAME):$(MDF_VERSION_TAG))
 	$(call append_artifact_file,MDF_VERSION_TAG,$(MDF_VERSION_TAG))
+
+latest-tag: release ## Add this target to `release` to also tag the released image with the ":latest" tag
+	@:$(call check_defined, MDF_VERSION_TAG, required to use `version-tag` target)
+	@echo 'Tagging the current release as "latest"...'
+	$(call tag_and_push,$(MDF_REGISTRY_IMAGE_NAME):$(MDF_UTAG),$(MDF_REGISTRY_IMAGE_NAME):latest)
+	$(call append_artifact_file,MDF_VERSION_TAG,latest)
 
 
 #:## Misc
