@@ -195,7 +195,6 @@ latest-tag: release ## Add this target to `release` to also tag the released ima
 	@:$(call check_defined, MDF_VERSION_TAG, required to use `version-tag` target)
 	@echo 'Tagging the current release as "latest"...'
 	$(call tag_and_push,$(MDF_REGISTRY_IMAGE_NAME):$(MDF_UTAG),$(MDF_REGISTRY_IMAGE_NAME):latest)
-	$(call append_artifact_file,MDF_VERSION_TAG,latest)
 
 
 #:## Misc
