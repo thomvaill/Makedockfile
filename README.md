@@ -38,6 +38,7 @@ echo "\nMakedockfile.dist.conf\nMakedockfile.out\n" >> .gitignore
 ### Version 1.2.0
 
 -   Add [`docker buildx`](https://docs.docker.com/buildx/working-with-buildx/) support
+-   Add the `print-image-name` command
 
 ### Version 1.1.0
 

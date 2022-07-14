@@ -209,6 +209,9 @@ clean: stop rm ## Stop running container and clean related images
 	@echo 'Cleaning related images...'
 	@[ "$$(docker image ls | grep '^$(MDF_IMAGE_NAME) ')" ] && docker image rm $(MDF_IMAGE_NAME):latest || exit 0
 
+print-image-name: ## Print the image name
+	@echo $(MDF_IMAGE_NAME)
+
 print-utag: ## Print the current unique identifier that will be used for `release`
 	@echo $(MDF_UTAG)
 
