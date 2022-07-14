@@ -174,13 +174,13 @@ define tag_and_push # from, to
 endef
 
 define append_artifact_file # variable_name, variable_value
-	@echo "$(1)=$(2)" >> $(MDF_ARTIFACT_PATH)
+	@echo "$(1)=$(2)" >> "$(MDF_ARTIFACT_PATH)"
 endef
 
 release: build ## Build image, tag it with a unique identifier and push it to the repository
 	@echo 'Releasing under the tag "$(MDF_UTAG)"...'
-	$(call reset_artifact_file)
 	$(call tag_and_push,$(MDF_IMAGE_NAME):latest,$(MDF_REGISTRY_IMAGE_NAME):$(MDF_UTAG))
+	$(call append_artifact_file,MDF_IMAGE_NAME,$(MDF_IMAGE_NAME))
 	$(call append_artifact_file,MDF_REGISTRY_IMAGE_NAME,$(MDF_REGISTRY_IMAGE_NAME))
 	$(call append_artifact_file,MDF_UTAG,$(MDF_UTAG))
 
