@@ -1,14 +1,14 @@
 # Makedockfile
 # https://github.com/Thomvaill/Makedockfile/
 #
-# @version 1.1.0
+# @version 1.2.0
 # @author  Thomvaill (https://github.com/Thomvaill)
 # @license MIT
 #
 # Inspired by https://gist.github.com/mpneuried/0594963ad38e68917ef189b4e6a269db
 #
 
-MDF_MAKEDOCKFILE_VERSION = 1.1.0
+MDF_MAKEDOCKFILE_VERSION = 1.2.0
 MDF_MAKEDOCKFILE_REPOSITORY = https://github.com/Thomvaill/Makedockfile.git
 
 # CONFIG
@@ -25,6 +25,7 @@ MDF_MAKEDOCKFILE_REPOSITORY = https://github.com/Thomvaill/Makedockfile.git
 #                                     just COMMIT_HASH if not
 #                      You can execute `make print-utag` to see the result
 #
+# - MDF_USE_BUILDX   : to use `docker buildx build` instead of `docker image build`. Default: 0
 # - MDF_BUILD_PARAMS : additional parameters to pass to docker build. Some useful ones: --no-cache, --squash...
 # - MDF_RUN_PARAMS   : additional parameters to pass to docker run. Some useful ones: -p, -v...
 # - MDF_RUN_CMD      : to override the default image command
@@ -56,6 +57,12 @@ ifdef MDF_REGISTRY
 MDF_REGISTRY_IMAGE_NAME = $(MDF_REGISTRY)/$(MDF_IMAGE_NAME)
 else
 MDF_REGISTRY_IMAGE_NAME = $(MDF_IMAGE_NAME)
+endif
+
+ifeq ($(MDF_USE_BUILDX), 1)
+MDF_BUILD_CMD = docker buildx build
+else
+MDF_BUILD_CMD = docker image build
 endif
 
 MDF_ARTIFACT_PATH = ./Makedockfile.out
@@ -99,7 +106,7 @@ help: ## This help
 build: ## Build image
 	$(eval MDF_IIDFILE_PATH := $(shell mktemp -t dm-iid-XXXXXX))
 	@echo 'Building $(MDF_IMAGE_NAME)...'
-	docker image build --force-rm=true --iidfile=$(MDF_IIDFILE_PATH) $(MDF_BUILD_PARAMS) -t $(MDF_IMAGE_NAME):latest .
+	$(MDF_BUILD_CMD) --force-rm=true --iidfile=$(MDF_IIDFILE_PATH) $(MDF_BUILD_PARAMS) -t $(MDF_IMAGE_NAME):latest .
 	@echo "MDF_IMAGE_ID=`cat $(MDF_IIDFILE_PATH)`" > $(MDF_ARTIFACT_PATH)
 	@rm -f $(MDF_IIDFILE_PATH)
 
@@ -154,7 +161,7 @@ logs-follow: ## Follow running container logs
 
 test: build ## Build image and run unit tests (Dockerfile.test needed)
 	@echo 'Building test image...'
-	docker image build --force-rm=true -t $(MDF_IMAGE_NAME):test --file Dockerfile.test .
+	$(MDF_BUILD_CMD) --force-rm=true -t $(MDF_IMAGE_NAME):test --file Dockerfile.test .
 	@echo 'Running test image...'
 	docker container run $(MDF_TEST_PARAMS) --rm $(MDF_IMAGE_NAME):test
 

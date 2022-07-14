@@ -35,9 +35,9 @@ test_tests () {
 
 # *** common functions
 clean () {
-    docker container stop "${CONTAINER_NAME}" || true &> /dev/null
-    docker container rm "${CONTAINER_NAME}" || true &> /dev/null
-    docker image rm "${IMAGE_NAME}" || true &> /dev/null
+    docker container stop "${CONTAINER_NAME}" &> /dev/null || true
+    docker container rm "${CONTAINER_NAME}" &> /dev/null || true
+    docker image rm "${IMAGE_NAME}" &> /dev/null || true
 }
 
 # *** shunit2

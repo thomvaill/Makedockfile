@@ -35,6 +35,10 @@ echo "\nMakedockfile.dist.conf\nMakedockfile.out\n" >> .gitignore
 
 ## Changelog
 
+### Version 1.2.0
+
+-   Add [`docker buildx`](https://docs.docker.com/buildx/working-with-buildx/) support
+
 ### Version 1.1.0
 
 -   Add the `latest-tag` target to release the image with the `:latest` tag
