@@ -10,6 +10,6 @@
   "author": "Thomas Vaillant <vaillant.thomas@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "mocha": "^7.0.1"
+    "mocha": "^7.2.0"
   }
 }
